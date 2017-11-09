@@ -6,7 +6,7 @@ module.exports = (Franz) => {
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
-      if (elements[i].querySelectorAll('.icon-muted').length === 0) {
+      if (elements[i].querySelectorAll('*[data-icon="muted"]').length === 0) {
         count += 1;
       }
     }
