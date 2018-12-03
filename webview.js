@@ -1,5 +1,19 @@
 const path = require('path');
 
+// Hackfix to avoid Chrome 36+ message
+(async () => {
+  try {
+    const registrations = await window.navigator.serviceWorker.getRegistrations();
+    for (const registration of registrations) {
+      registration.unregister();
+      console.log('ServiceWorker unregistered');
+    }
+  } catch (err) {
+    console.err(err);
+  }
+})();
+
+
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     const elements = document.querySelectorAll('.CxUIE, .unread');
