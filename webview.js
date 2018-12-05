@@ -9,7 +9,7 @@ const path = require('path');
       console.log('ServiceWorker unregistered');
     }
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 })();
 
