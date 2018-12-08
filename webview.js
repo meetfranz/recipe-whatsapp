@@ -1,4 +1,5 @@
 const path = require('path');
+const performTextSubstitutions = require('electron-text-substitutions').default;
 
 // Hackfix to avoid Chrome 36+ message
 (async () => {
@@ -29,9 +30,23 @@ module.exports = (Franz) => {
     Franz.setBadge(count);
   };
 
+  this.lastTextInput = null;
+
+  const attachTextSubstitutions = function attachTextSubstitutions() {
+    const textInput = document.querySelector('.copyable-text.selectable-text[contenteditable="true"]');
+
+    if (textInput && !this.lastTextInput !== textInput) {
+      performTextSubstitutions(textInput);
+      this.lastTextInput = textInput;
+    }
+  };
+
   // inject franz.css stylesheet
   Franz.injectCSS(path.join(__dirname, 'service.css'));
 
   // check for new messages every second and update Franz badge
   Franz.loop(getMessages);
+
+  // check for new text input to attach text substitutions
+  Franz.loop(attachTextSubstitutions);
 };

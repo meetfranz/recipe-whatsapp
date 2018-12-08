@@ -9,5 +9,8 @@
   "config": {
     "serviceURL": "https://web.whatsapp.com",
     "hasNotificationSound": true
+  },
+  "dependencies": {
+    "electron-text-substitutions": "^1.4.16"
   }
 }
