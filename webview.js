@@ -1,20 +1,22 @@
+const { remote } = require('electron');
 const path = require('path');
 
-// Hackfix to avoid Chrome 36+ message
-(async () => {
-  try {
-    const registrations = await window.navigator.serviceWorker.getRegistrations();
-    for (const registration of registrations) {
-      registration.unregister();
-      console.log('ServiceWorker unregistered');
-    }
-  } catch (err) {
-    console.error(err);
-  }
-})();
+const webContents = remote.getCurrentWebContents();
+const { session } = webContents;
 
+window.onload = () => {
+  const title = document.querySelector('.window-title').innerHTML;
+  if (title && title.includes('Google Chrome 36+')) {
+    window.location.reload();
+  }
+};
 
 module.exports = (Franz) => {
+  session.flushStorageData();
+  session.clearStorageData({
+    storages: ['serviceworkers'],
+  });
+
   const getMessages = function getMessages() {
     const elements = document.querySelectorAll('.CxUIE, .unread');
     let count = 0;
@@ -25,13 +27,9 @@ module.exports = (Franz) => {
       }
     }
 
-    // set Franz badge
     Franz.setBadge(count);
   };
 
-  // inject franz.css stylesheet
   Franz.injectCSS(path.join(__dirname, 'service.css'));
-
-  // check for new messages every second and update Franz badge
   Franz.loop(getMessages);
 };
