@@ -4,19 +4,32 @@ const path = require('path');
 const webContents = remote.getCurrentWebContents();
 const { session } = webContents;
 
-window.onload = () => {
-  const title = document.querySelector('.window-title').innerHTML;
-  if (title && title.includes('Google Chrome 36+')) {
+window.addEventListener('load', async () => {
+  const titleEl = document.querySelector('.window-title');
+  if (titleEl && titleEl.innerHTML.includes('Google Chrome 36+')) {
     window.location.reload();
   }
-};
+});
+
+window.addEventListener('beforeunload', async () => {
+  try {
+    session.flushStorageData();
+    session.clearStorageData({
+      storages: ['appcache', 'serviceworkers', 'cachestorage', 'websql', 'indexdb'],
+    });
+
+    const registrations = await window.navigator.serviceWorker.getRegistrations();
+
+    registrations.forEach((r) => {
+      r.unregister();
+      console.log('ServiceWorker unregistered');
+    });
+  } catch (err) {
+    console.err(err);
+  }
+});
 
 module.exports = (Franz) => {
-  session.flushStorageData();
-  session.clearStorageData({
-    storages: ['serviceworkers'],
-  });
-
   const getMessages = function getMessages() {
     const elements = document.querySelectorAll('.CxUIE, .unread');
     let count = 0;
