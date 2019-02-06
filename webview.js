@@ -4,12 +4,12 @@ const path = require('path');
 const webContents = remote.getCurrentWebContents();
 const { session } = webContents;
 
-window.addEventListener('load', async () => {
+setTimeout(() => {
   const titleEl = document.querySelector('.window-title');
   if (titleEl && titleEl.innerHTML.includes('Google Chrome 36+')) {
     window.location.reload();
   }
-});
+}, 1000);
 
 window.addEventListener('beforeunload', async () => {
   try {
