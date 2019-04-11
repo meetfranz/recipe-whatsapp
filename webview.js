@@ -5,8 +5,7 @@ const webContents = remote.getCurrentWebContents();
 const { session } = webContents;
 
 setTimeout(() => {
-  const titleEl = document.querySelector('.window-title');
-  if (titleEl && titleEl.innerHTML.includes('Google Chrome 36+')) {
+  if (document.querySelector('body').innerHTML.includes('Google Chrome 36+')) {
     window.location.reload();
   }
 }, 1000);
