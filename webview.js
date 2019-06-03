@@ -30,7 +30,7 @@ window.addEventListener('beforeunload', async () => {
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
-    const elements = document.querySelectorAll('.CxUIE, .unread');
+    const elements = document.querySelectorAll('.CxUIE, .unread, .P6z4j');
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
