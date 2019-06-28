@@ -5,7 +5,7 @@ const webContents = remote.getCurrentWebContents();
 const { session } = webContents;
 
 setTimeout(() => {
-  if (document.querySelector('body').innerHTML.includes('Google Chrome 36+')) {
+  if (document.querySelector('body').innerText.toLowerCase().includes('whatsapp works with google chrome')) {
     window.location.reload();
   }
 }, 1000);
