@@ -31,7 +31,7 @@ window.addEventListener('beforeunload', async () => {
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
-    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B');
+    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B ._31gEB');
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
