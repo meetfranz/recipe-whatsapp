@@ -31,12 +31,16 @@ window.addEventListener('beforeunload', async () => {
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
-    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ');
+    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B');
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
-      if (elements[i].querySelectorAll('*[data-icon="muted"]').length === 0) {
-        count += 1;
+      try {
+        if (elements[i].parentElement.parentElement.querySelectorAll('*[data-icon="muted"]').length === 0) {
+          count += 1;
+        }
+      } catch (err) {
+        // nope
       }
     }
 
