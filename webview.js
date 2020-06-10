@@ -11,6 +11,10 @@ setTimeout(() => {
   }
 }, 1000);
 
+const isMutedIcon = element => element.parentElement.parentElement.querySelectorAll('*[data-icon="muted"]').length !== 0;
+
+const isPinnedIcon = element => element.classList.contains('_1EFSv');
+
 window.addEventListener('beforeunload', async () => {
   try {
     session.flushStorageData();
@@ -31,16 +35,17 @@ window.addEventListener('beforeunload', async () => {
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
-    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B');
+    const elements = document.querySelectorAll('.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B ');
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
       try {
-        if (elements[i].parentElement.parentElement.querySelectorAll('*[data-icon="muted"]').length === 0) {
+      // originalLog(isMutedIcon(elements[i]), isPinnedIcon(elements[i]));
+        if (!isMutedIcon(elements[i]) && !isPinnedIcon(elements[i])) {
           count += 1;
         }
       } catch (err) {
-        // nope
+        // nope;
       }
     }
 
