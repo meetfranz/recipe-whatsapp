@@ -1,9 +1,7 @@
-.app-wrapper-web .app,
-.app-wrapper-web ._36Q2N,
-.app-wrapper-web .h70RQ {
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
+#app > div > div, #app > div > span:nth-child(3) > div > span > div > div {
+  width: 100vw !important;
+  height: 100vh !important;
+  top: 0 !important;
 }
 
 ._1Wk6A ._3YewW._31v_P._2Ptrm {
