@@ -18,8 +18,6 @@ module.exports = (Franz) => {
     const elements = document.querySelectorAll(
       '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j, ._1V5O7 ._2vfYK, html[dir] ._23LrM, ._1pJ9J',
     );
-
-    console.log(elements);
     let count = 0;
 
     for (let i = 0; i < elements.length; i += 1) {
