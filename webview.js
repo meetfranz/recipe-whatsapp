@@ -7,11 +7,9 @@ setTimeout(() => {
   }
 }, 1000);
 
-const isMutedIcon = element =>
-  element.parentElement.parentElement.querySelectorAll('*[data-icon="muted"]')
-    .length !== 0;
+const isMutedIcon = element => element.querySelectorAll('*[data-icon="muted"]').length !== 0;
 
-const isPinnedIcon = element => element.classList.contains('_1EFSv');
+const isPinnedIcon = element => element.querySelectorAll('*[data-icon="pinned"]').length !== 0;
 
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
