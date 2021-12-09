@@ -16,7 +16,7 @@ const isPinnedIcon = element => element.classList.contains('_1EFSv');
 module.exports = (Franz) => {
   const getMessages = function getMessages() {
     const elements = document.querySelectorAll(
-      '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j, ._1V5O7 ._2vfYK, html[dir] ._23LrM, ._1pJ9J',
+      '.CxUIE, .unread, ._0LqQ, .m61XR .ZKn2B, .VOr2j, ._1V5O7 ._2vfYK, html[dir] ._23LrM, ._1pJ9J:not(._2XH9R)',
     );
     let count = 0;
 
