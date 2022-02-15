@@ -8,13 +8,6 @@ setTimeout(() => {
   }
 }, 1000);
 
-window.addEventListener('beforeunload', () => {
-  console.log('franz', typeof window.FranzAPI.clearCache);
-  if (typeof window.FranzAPI.clearCache === 'function') {
-    window.FranzAPI.clearCache();
-  }
-});
-
 const isMutedIcon = element =>
   element.parentElement.parentElement.querySelectorAll('*[data-icon="muted"]')
     .length !== 0;
