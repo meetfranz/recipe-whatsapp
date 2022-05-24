@@ -1,7 +1,7 @@
 {
   "id": "whatsapp",
   "name": "WhatsApp",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "WhatsApp",
   "main": "index.js",
   "author": "Stefan Malzner <stefan@adlk.io>",
